@@ -31,7 +31,7 @@ make_schema_at(
       naming => 'v8',
       moniker_parts => [qw(schema name)],
       moniker_map => sub { my $name = $_[0]; $name =~ s/^dbo//; join '', map ucfirst, split '_', $name },
-      dump_directory => './lib',
+      dump_directory => "$FindBin::Bin/../lib",
       components =>     [
 	'InflateColumn::DateTime',
 #	'Schema::Config',
