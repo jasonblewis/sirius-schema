@@ -54,7 +54,9 @@ make_schema_at(
 				  zz_product_list_today|
                                   period|
 				  pr_price|
-				  pr_qty_break)\z/x ],
+				  pr_qty_break|
+                                  zz_so_eps_order_staging|
+                                  zz_so_eps_order_line_staging)\z/x ],
 	],
       overwrite_modifications => 1,
       
