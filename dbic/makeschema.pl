@@ -27,6 +27,7 @@ make_schema_at(
     {
         #debug => 1,
       db_schema => [qw(dbo)],
+      schema_base_class => 'DBIx::Class::Schema::Config',
       naming => 'v8',
       moniker_parts => [qw(schema name)],
       moniker_map => sub { my $name = $_[0]; $name =~ s/^dbo//; join '', map ucfirst, split '_', $name },
