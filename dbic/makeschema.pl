@@ -7,20 +7,11 @@ use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
-use Config::Any;
 use Carp 'croak';
  
 use Data::Dumper;
 
 use DBIx::Class::Schema::Loader qw/ make_schema_at /;
-
-my $tmpcfg =  Config::Any->load_files( { files => ["$FindBin::Bin/../environments/development.yml" ], use_ext => 1} )->[0]; 
-
-my ($filename, $config) = %$tmpcfg;
-my $dsn = $config->{plugins}->{DBIC}->{default}->{dsn};
-my $username = $config->{plugins}->{DBIC}->{default}->{user};
-my $password = $config->{plugins}->{DBIC}->{default}->{password};
-
 
 make_schema_at(
     'Reports::Schema',
@@ -61,7 +52,7 @@ make_schema_at(
       overwrite_modifications => 1,
       
   },
-    [ $dsn, $username, $password,
+    [ 'sirius',
 #      { loader_class => 'MyLoader' } # optionally
     ],
 );
