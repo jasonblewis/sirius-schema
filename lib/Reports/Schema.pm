@@ -7,13 +7,13 @@ package Reports::Schema;
 use strict;
 use warnings;
 
-use base 'DBIx::Class::Schema';
+use base 'DBIx::Class::Schema::Config';
 
 __PACKAGE__->load_namespaces;
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-23 15:50:54
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mq03vkMmXnShepJU1QcSMQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-05-26 20:11:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:DJM5MprdWWntMnbc1xgvNg
 
 __PACKAGE__->load_namespaces(
    default_resultset_class => '+Reports::Schema::ResultSet',
