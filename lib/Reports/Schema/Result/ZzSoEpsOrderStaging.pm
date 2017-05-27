@@ -229,6 +229,13 @@ __PACKAGE__->set_primary_key("order_source", "record_no");
 # Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-05-26 20:07:45
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CrA3UjltkMpNPVeYB0k4cg
 
+__PACKAGE__->has_many(
+  "order_lines" =>
+    'Reports::Schema::Result::ZzSoEpsOrderLineStaging',
+  {
+    'foreign.order_source' => 'self.order_source',
+    'foreign.record_no'    => 'self.record_no',
+  }
+);
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;

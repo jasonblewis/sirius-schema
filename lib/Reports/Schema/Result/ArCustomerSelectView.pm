@@ -706,6 +706,105 @@ __PACKAGE__->add_columns(
 # Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-23 15:50:54
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:d6TO1P6myBtYnCd3vi2z/Q
 
+__PACKAGE__->result_source_instance->view_definition(
+'select
+	cust.customer_code, 
+	cust.customer_search_key,
+	cust.ship_from_warehouse,
+	cust.company_code,
+	c.name,
+	UPPER(c.name) as uppercase_name,
+	c.address_1,
+	c.address_2,
+	c.address_3,
+	c.postcode,
+	c.abn,
+	c.industry_code,
+	c.territory_code,
+	cust.branch_code,
+	cust.debtor_code,
+	cust.sales_class1_code,
+	cust.sales_class2_code,
+	cust.sales_class3_code,
+	cust.sales_rep_code,
+	cust.price_code,
+	cust.cust_disc_group,
+	cust.gets_promo_flag,
+	cust.pricing_customer,
+	cust.ordernr_rqd,
+	cust.account_or_cash,
+	cust.sale_or_credit,
+	cust.gst_code,
+	cust.invoice_copies,
+	cust.stop_flag,
+	cust.active_flag,
+	cust.date_created,
+	cust.backorders_allowed,
+	cust.check_order_qty,
+	cust.min_price_code,
+	cust.eps_supplier_code,
+	cust.ship_doc_inv,
+	cust.ship_doc_pack,
+	cust.include_in_sales_report,
+	cust.ship_via_code,
+	cust.cust_prod_list,
+	cust.line_nr_rqd,
+	cust.run_code,
+	cust.run_sequence,
+	cust.freight_code,
+	cust.consolidate_orders_flag,
+	cust.wet_exempt_flag,
+	cust.spare_code_01,
+	cust.spare_code_02,
+	cust.spare_code_03,
+	cust.spare_code_04,
+	cust.spare_code_05,
+	cust.spare_code_06,
+	cust.spare_code_07,
+	cust.spare_code_08,
+	cust.spare_code_09,
+	cust.spare_code_10,
+	cust.spare_value_01,
+	cust.spare_value_02,
+	cust.spare_value_03,
+	cust.spare_value_04,
+	cust.spare_value_05,
+	cust.spare_value_06,
+	cust.spare_value_07,
+	cust.spare_value_08,
+	cust.spare_value_09,
+	cust.spare_value_10,
+	cust.spare_flag_01,
+	cust.spare_flag_02,
+	cust.spare_flag_03,
+	cust.spare_flag_04,
+	cust.spare_flag_05,
+	cust.spare_flag_06,
+	cust.spare_flag_07,
+	cust.spare_flag_08,
+	cust.spare_flag_09,
+	cust.spare_flag_10,
+	st.ship_to_code,
+	st.ship_via_code as ship_to_ship_via,
+        st.name as ship_to_name,
+	st.address_1 as ship_to_add1,
+	st.address_2 as ship_to_add2,
+	st.address_3 as ship_to_add3,
+	st.postcode as ship_to_pc,
+	st.active_flag as ship_to_active
+
+  from
+   company c
+  inner join
+  ar_customer cust
+  left outer join
+  ar_ship_to_cust st
+  on
+   cust.customer_code = st.customer_code
+  on
+   cust.company_code = c.company_code');
+  
+   
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;

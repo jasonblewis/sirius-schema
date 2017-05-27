@@ -19,4 +19,10 @@ __PACKAGE__->load_namespaces(
    default_resultset_class => '+Reports::Schema::ResultSet',
 );
 
+sub sqlt_deploy_hook {
+  my ($self, $sqlt_schema) = @_;
+  
+  $sqlt_schema->drop_table('ap_supplier_select_view');
+}
+
 1;

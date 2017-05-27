@@ -1,0 +1,11 @@
+* using postgres schema for testing
+#+BEGIN_SRC perl
+my $schema_class = $self->schema_class;
+eval "require $schema_class"
+or die "failed to require $schema_class: $@";
+
+my $schema =  $schema_class->connect( $self->connect_info )
+  or die "failed to connect to ";
+$schema->deploy();
+return $schema;
+#+END_SRC

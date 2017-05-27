@@ -290,6 +290,26 @@ __PACKAGE__->set_primary_key("order_source", "record_no", "line_no");
 # Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-05-26 20:18:54
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:L/devSAazDjEgF2+MT9eVQ
 
+__PACKAGE__->belongs_to(
+  "order" =>
+    'Reports::Schema::Result::ZzSoEpsOrderStaging',
+  {
+    'foreign.order_source' => 'self.order_source',
+    'foreign.record_no'    => 'self.record_no',
+  }
+);
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+# see https://metacpan.org/source/HORNBURG/Interchange6-Schema-0.133/lib/Interchange6/Schema/Result/Message.pm#L427
+sub insert {
+  my $self = shift;
+  my $rset_order =
+      $self->result_source->schema->resultset("ZzSoEpsOrderStaging");
+  # start transaction
+  # get number of lines in order_lines
+  # insert order line
+  # if successful, update order with number of lines +1
+  # end transaction
+  # else throw an exception
+}
+
 1;

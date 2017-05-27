@@ -519,10 +519,76 @@ __PACKAGE__->add_columns(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07045 @ 2017-03-23 16:07:34
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6bsEn5VxG/q8krTK3iCJRw
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2017-05-28 04:34:22
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5uZIEOC6C4nEyYnhZ+lSNA
 
 __PACKAGE__->set_primary_key("supplier_code");
+__PACKAGE__->result_source_instance->is_virtual(1);
+__PACKAGE__->result_source_instance->view_definition('select 
+	s.supplier_code,
+	s.supplier_search_key,
+	s.company_code,
+	c.name,
+	UPPER(c.name) as uppercase_name,
+	c.address_1,
+	c.address_2,
+	c.address_3,
+	c.postcode,
+	c.industry_code,
+	c.territory_code,
+	c.abn,
+	s.branch_code,
+	s.creditor_code,
+	s.discount_group_code,
+	s.national_supplier,
+	s.national_flag,
+	s.stop_flag,
+	s.active_flag,
+	s.branch_supplier,
+	s.lead_time_days,
+	s.date_created,
+	s.currency_code,
+	s.po_format,
+	s.invoice_format,
+	s.check_cost_flag,
+	s.check_price_flag,
+	s.ra_required,
+	s.eps_customer_code,
+	s.gst_code,
+	ship_via_code,
+	s.spare_code_01,
+	s.spare_code_02,
+	s.spare_code_03,
+	s.spare_code_04,
+	s.spare_code_05,
+	s.spare_code_06,
+	s.spare_code_07,
+	s.spare_code_08,
+	s.spare_code_09,
+	s.spare_code_10,
+	s.spare_value_01,
+	s.spare_value_02,
+	s.spare_value_03,
+	s.spare_value_04,
+	s.spare_value_05,
+	s.spare_value_06,
+	s.spare_value_07,
+	s.spare_value_08,
+	s.spare_value_09,
+	s.spare_value_10,
+	s.spare_flag_01,
+	s.spare_flag_02,
+	s.spare_flag_03,
+	s.spare_flag_04,
+	s.spare_flag_05,
+	s.spare_flag_06,
+	s.spare_flag_07,
+	s.spare_flag_08,
+	s.spare_flag_09,
+	s.spare_flag_10
+ from ap_supplier s
+ join company c 
+ on s.company_code = c.company_code');
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 1;

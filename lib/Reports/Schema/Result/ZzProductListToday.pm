@@ -254,4 +254,12 @@ sub unitprice_2dp_na {
   }
 }
 
+__PACKAGE__->result_source_instance->view_definition(q/
+SELECT        d.product_code, d.description, p.UnitPrice, p.CartonPrice, p.CartonSize, p.retail_price, d.gst_code, d.unit, d.weight, d.barcode, d.doNotList, d.CartonOnly, p.dist_price, d.spare_flag_03, d.spare_flag_04, 
+                         d.spare_flag_05, d.spare_flag_06, d.spare_flag_07, d.spare_flag_08, d.spare_flag_09, d.spare_flag_10
+FROM            zz_prod_detail_today AS d LEFT OUTER JOIN
+                         zz_prod_price_list_today AS p ON d.product_code = p.product_code
+WHERE        (d.doNotList = 'N') OR
+                         (d.doNotList IS NULL)/);
+
 1;

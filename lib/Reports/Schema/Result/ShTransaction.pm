@@ -309,8 +309,8 @@ __PACKAGE__->belongs_to(
 );
 
 __PACKAGE__->has_many(
-    "most_recent_transactions" =>
-    'Reports::Schema::Result::ZzMostRecentTrasaction',
+    "most_recent_purchase" =>
+    'Reports::Schema::Result::ZzMostRecentPurchase',
   {'foreign.customer_code' => 'self.customer_code',
    'foreign.product_code' => 'self.product_code',
    'foreign.invoice_date' => 'self.invoice_date',

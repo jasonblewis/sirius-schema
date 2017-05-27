@@ -100,4 +100,10 @@ __PACKAGE__->belongs_to(
  }
 );
 
+__PACKAGE__->result_source_instance->view_definition('
+SELECT        customer_code, product_code, MAX(invoice_date) AS invoice_date
+FROM            sh_transaction
+WHERE        (sales_qty > 0)
+GROUP BY customer_code, product_code');
+
 1;

@@ -16,7 +16,7 @@ use DBIx::Class::Schema::Loader qw/ make_schema_at /;
 make_schema_at(
     'Reports::Schema',
     {
-        #debug => 1,
+      #debug => 1,
       db_schema => [qw(dbo)],
       schema_base_class => 'DBIx::Class::Schema::Config',
       naming => 'v8',
@@ -25,27 +25,32 @@ make_schema_at(
       dump_directory => "$FindBin::Bin/../lib",
       components =>     [
 	'InflateColumn::DateTime',
-#	'Schema::Config',
       ],
       constraint => [
           [ qr/\Adbo\z/ => qr/\A(?:
                                   ap_supplier|
                                   company|
 				  phone|
+                                  in_barcode|
                                   in_product|
 				  ar_transaction|
 				  ar_customer|
 				  ar_customer_select_view|
 				  ar_debtor|
+                                  ar_ship_to_cust|
                                   ap_supplier_select_view|
 				  sh_transaction|
 				  gst_tax_table|
 				  in_department|
 				  zz_most_recent_purchase|
 				  zz_product_list_today|
+                                  zz_prod_carton_price_today|
+                                  zz_prod_price_list_today|
+                                  zz_prod_wholesale_price_today|
                                   period|
 				  pr_price|
 				  pr_qty_break|
+                                  zz_prod_detail_today|
                                   zz_so_eps_order_staging|
                                   zz_so_eps_order_line_staging)\z/x ],
 	],
