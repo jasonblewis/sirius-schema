@@ -14,6 +14,9 @@ or die "failed to require $schema_class: $@";
 my $schema =  $schema_class->connect( $pgsql->dsn )
   or die "failed to connect to ";
 
+# check that we get the correct object back
+isa_ok( $schema, $schema_class );
+
 # create getdate function
 # https://stackoverflow.com/a/2882614/386557
 my $sql = q/create function public.getdate() returns timestamptz
